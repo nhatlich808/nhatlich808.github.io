@@ -12,27 +12,44 @@
 <body>
 	<div id="app"></div>
 
-	<div id="extend">
-		<h1>Hello, World</h1>
-	</div>
-
 	<!--Reactjs App Creating-->
 	<!--Reactjs-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>  
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react-with-addons.js"></script>
 	<script type="text/jsx">
-		var App = React.createClass({
-			render() {
-				return (
-					<div>
-						<h1>Hello, World !</h1>
-					</div>
-				);
-			}
-		});
-		React.render(<App />, document.getElementById("app"));
-	</script>
+	    var Form = React.createClass({
+	      render() {
+	        return (
+	          <div>
+	            <input type="submit" onClick={this.props.clickHandle} />
+	            <h3>You have {this.props.counter} clicked times </h3>
+	          </div>
+	        );
+	      }
+	    });
+	    var App = React.createClass({
+	      getInitialState() {
+	        return {
+	          counter: 0
+	        }
+	      },
+	      clickHandle() {
+	        var newCounter = this.state.counter += 1;
+	        this.setState({
+	          counter: newCounter
+	        });
+	      },
+	      render() {
+	        return(
+	          <div>
+	            <h1>Welcome to couter click app</h1>
+	            <Form counter={this.state.counter} clickHandle={this.clickHandle} />
+	          </div>
+	        );
+	      }
+	    });
+	    React.render(<App />, document.getElementById('app'));
+    </script>
 
 
 <!--Jquery-->
