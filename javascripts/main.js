@@ -2,9 +2,13 @@ var App = React.createClass({
   render() {
     return(
       <div>
-        <h1>Hello !</h1>
+      Hello world ! <input type="text" placeholder="Your name here..." />
+      <br/>It's {this.props.date.toTimeString()}
       </div>
     );
   }
 });
-ReactDOM.render(<App />, document.getElementById('app'));
+function tick() {
+  ReactDOM.render(<App date={ new Date()} />, document.getElementById('app'));
+}
+setInterval(tick, 500);
