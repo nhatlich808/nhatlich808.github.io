@@ -68,15 +68,32 @@
 
 <!--Doing React-->
     <script type="text/babel">
-      var App = React.createClass({
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            data: ['Mango', 'Pear', 'Apple', 'Banana']
+          }
+          this.handleAdd = this.handleAdd.bind(this);
+        }
+        
+        {//handleAdd here //}
+        
         render() {
+          var items = this.state.data.map((item, i) => (
+            <li>
+              <a href="#">{item}</a>
+            </li>
+          ));
           return(
             <div>
-              <h1>Hello !</h1>
+              <ul className="nav nav-pills">
+                {items}
+              </ul>
             </div>
           );
         }
-      });
+      }
       ReactDOM.render(<App />, document.getElementById('app'));
     </script>
 <!--React Script-->
